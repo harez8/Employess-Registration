@@ -5,16 +5,22 @@
 Este es un sistema desarrollado como prueba técnica para la empresa **Cidenet S.A.S.**, cuyo objetivo es permitir el registro de empleados con validaciones específicas y generación automática de correos electrónicos institucionales.
 
 ## Estructura del proyecto
-'
+
 Employess-Registration/
 ├── employee_r/ # Proyecto principal Django
+
 │ ├── employee/ # Aplicación que contiene los modelos y lógica
+
 │ ├── employee_r/ # Configuración del proyecto Django
+
 │ ├── db_scripts.sql # Scripts SQL exportados
+
 │ ├── manage.py # Comando principal
+
 │ └── requirements.txt # Dependencias del proyecto
+
 └── README.md 
-'
+
 
 ---
 ## Validaciones implementadas

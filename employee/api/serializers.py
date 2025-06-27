@@ -9,6 +9,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
         read_only_fields = ['email', 'status', 'created_at']
 
     def validate(self, data):
+        # Asegura mayúsculas antes de validar
+        for field in ['first_name', 'first_surname', 'second_surname', 'other_names']:
+            valor = data.get(field)
+            if valor:
+                data[field] = valor.upper().strip()
+            
         # Validaciones personalizadas
         validar_nombre(data['first_surname'], "Primer Apellido")
         validar_nombre(data['second_surname'], "Segundo Apellido")
@@ -22,6 +28,14 @@ class EmployeeSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        correo = generar_correo_unico(validated_data['first_name'], validated_data['first_surname'],validated_data['country'])
+        # Generar correo primero con los datos validados (no del objeto aún)
+        correo = generar_correo_unico(
+            nombre=validated_data['first_name'],
+            apellido=validated_data['first_surname'],
+            pais=validated_data['country']
+    )
+        
         validated_data['email'] = correo
-        return super().create(validated_data)
+        validated_data['status'] = 'ACTIVO'
+        
+        return Employee.objects.create(**validated_data)

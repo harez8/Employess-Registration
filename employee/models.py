@@ -17,6 +17,13 @@ class Employee(models.Model):
         ('Talento Humano', 'Talento Humano'),
         ('Servicios Varios', 'Servicios Varios'),
     ]
+    
+    ID_TYPE_CHOICES = [
+        ('Cédula de Ciudadanía', 'Cédula de Ciudadanía'),
+        ('Cédula Extranjera', 'Cédula Extranjera'),
+        ('Pasaporte', 'Pasaporte'),
+        ('Permiso Especial', 'Permiso Especial'),
+    ]
 
     id = models.AutoField(primary_key=True)
     first_surname = models.CharField(max_length=20)
@@ -24,7 +31,7 @@ class Employee(models.Model):
     first_name = models.CharField(max_length=20)
     other_names = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=20, choices=COUNTRY_CHOICES)
-    id_type = models.CharField(max_length=30)
+    id_type = models.CharField(max_length=30, choices=ID_TYPE_CHOICES) 
     id_number = models.CharField(max_length=20)
     email = models.CharField(max_length=300, unique=True)
     entry_date = models.DateField()

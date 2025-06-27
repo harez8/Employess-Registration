@@ -125,4 +125,4 @@ Ejemplo de cuerpo de solicitud (JSON):
   "created_at": "2025-06-26T17:51:09.124221Z"
 }
 
-Desarrollado por **Heider Restrepo Z.** como parte del proceso de selección para Cidenet S.A.S.  
+```
